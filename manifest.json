@@ -4,7 +4,7 @@
   "start_url": ".",
   "display": "standalone",
   "background_color": "#F8F9FB",
-  "theme_color": "#F0792E",
+  "theme_color": "#EF8C24",
   "description": "Interactive onboarding prototype",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,

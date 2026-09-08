@@ -20,6 +20,26 @@
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="Interactive Money2India Business onboarding prototype.">
+  <!-- BankNav starts at DsColors.hero.colors.first: extend that solid colour
+       into browser-owned safe areas, without stretching the header gradient. -->
+  <meta name="theme-color" content="#EF8C24">
+  <style>
+    html, body {
+      background-color: #FFFFFF;
+    }
+    /* Flutter paints its header on a canvas. This solid top edge gives Safari
+       a fixed DOM colour to extend, while the bottom browser area stays white. */
+    #browser-top-edge {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background-color: #EF8C24;
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
@@ -32,6 +52,7 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
+  <div id="browser-top-edge" aria-hidden="true"></div>
   <!--
     You can customize the "flutter_bootstrap.js" script.
     This is useful to provide a custom configuration to the Flutter loader
