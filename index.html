@@ -39,6 +39,26 @@
       pointer-events: none;
       z-index: 0;
     }
+    #app-loading {
+      align-items: center;
+      background: #FFFFFF;
+      color: #333333;
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      gap: 12px;
+      inset: 0;
+      justify-content: center;
+      position: fixed;
+      z-index: 1;
+    }
+    #app-loading::before {
+      background: #E3530F;
+      border-radius: 999px;
+      content: '';
+      height: 8px;
+      width: 48px;
+    }
   </style>
 
   <!-- iOS meta tags & icons -->
@@ -53,14 +73,17 @@
 </head>
 <body>
   <div id="browser-top-edge" aria-hidden="true"></div>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
-
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
-  <script src="flutter_bootstrap.js" async></script>
+  <div id="app-loading" role="status" aria-live="polite">
+    Loading Money2India Business…
+  </div>
+  <script>
+    // Keep localhost reviews fresh even when an older build was cached before
+    // the preview server started sending Cache-Control: no-store.
+    const localPreview = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+    const bootstrap = document.createElement('script');
+    bootstrap.src = 'flutter_bootstrap.js' + (localPreview ? '?preview=' + Date.now() : '');
+    bootstrap.async = true;
+    document.body.appendChild(bootstrap);
+  </script>
 </body>
 </html>
